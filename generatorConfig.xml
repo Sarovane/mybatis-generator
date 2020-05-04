@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 通用mapper所在目录 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.xxx.mapper.my.MyMapper"/>
+        </plugin>
+        <!-- 由于本地安装mysql 8  所以在connectionURL添加了一些参数以便项目可以正常启动，如果为低版本则可以取消后缀-->
+        <!--其中的内容一定要修改为自己项目所对应的数据库链接-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/项目库&amp;autoReconnect=TRUE&amp;useSSL=FALSE&amp;serverTimezone=GMT"
+                        userId="root"
+                        password="password">
+        </jdbcConnection>
+
+        <!-- 生成的pojo所在包，需要和项目中的目录做对应 -->
+        <javaModelGenerator targetPackage="com.xxx.pojo" targetProject="src/main/java"/>
+
+        <!-- 对应生成的mapper所在目录 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- 配置mapper对应的java映射 -->
+        <javaClientGenerator targetPackage="com.xxx.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <!-- 数据库所对应的表 -->
+        <table tableName="carousel"></table>
+
+
+    </context>
+</generatorConfiguration>
