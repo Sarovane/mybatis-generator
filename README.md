@@ -30,5 +30,5 @@ com.mysql.cj.jdbc.Driver
 
 之后将需要映射的表进行配置，配置表所对应的表名即可。
 
-配置结束以后，找到GeneratorDisplay.java文件。执行内部的MAIN方法，即可逆向生成所需要的配置。
+配置结束以后，找到GeneratorDisplay.java文件。执行内部的main方法，即可逆向生成所需要的配置。
 
